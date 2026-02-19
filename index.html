@@ -144,12 +144,16 @@
   <script>
     // Registro do Service Worker (Obrigatório para PWA)
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
-      });
+      navigator.serviceWorker.register('./sw.js') // Adicione o './' antes
+        .then(() => console.log("Service Worker Registrado"))
+        .catch(err => console.log("Erro SW:", err));
     }
 
-    const broker = "ws://192.168.0.122:8083/mqtt";
+    // Substitua o IP local por um broker que aceite WSS (porta 8084 geralmente)
+    // Se o seu servidor local não tiver certificado SSL, o GitHub não deixará conectar.
+    const broker = "wss://broker.emqx.io:8084/mqtt";
+    // const broker = "ws://192.168.0.122:8083/mqtt";
+    
     const TOTAL_APARTAMENTOS = 22;
 
     const statusEl = document.getElementById("status");
