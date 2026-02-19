@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <link rel="manifest" href="manifest.json">
+  <title>Campainha</title>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #000000;
+      --surface: #0d0d0d;
+      --btn: #111111;
+      --border: #2a2a2a;
+      --accent: #00ff66;
+      --error: #ff3333;
+      --text: #ffffff;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+    }
+
+    header {
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: var(--surface);
+      color: var(--text);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      text-align: center;
+      padding: 6px;
+      font-size: 0.8rem;
+      color: #ffaa00;
+      background: #000;
+    }
+
+    .grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      gap: 8px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: var(--btn);
+      color: var(--text);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: active 0.1s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:active {
+      background: var(--accent);
+      color: #000;
+      transform: scale(0.95);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.7rem;
+      color: #777;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Campainha</header>
+  <div class="status">DISCONECTADO</div>
+
+  <div class="grid">
+    <!-- Exemplo de botões -->
+    <button>1</button><button>2</button><button>3</button><button>4</button>
+    <button>5</button><button>6</button><button>7</button><button>8</button>
+    <button>9</button><button>10</button><button>11</button><button>12</button>
+    <button>13</button><button>14</button><button>15</button><button>16</button>
+    <button>17</button><button>18</button><button>19</button><button>20</button>
+    <button>21</button><button>22</button><button>23</button><button>24</button>
+  </div>
+
+  <footer>MQTT CONTROLLER</footer>
+
+  <script>
+    // Registro do Service Worker (Obrigatório para PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+      });
+    }
+  </script>
+</body>
+</html>
+
