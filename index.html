@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#000000">
+  <!-- Android/Chrome -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <!-- iOS/Safari -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 
   <link rel="manifest" href="manifest.json">
   <title>Campainha</title>
@@ -153,7 +157,7 @@
     // Se o seu servidor local não tiver certificado SSL, o GitHub não deixará conectar.
     const broker = "wss://broker.emqx.io:8084/mqtt";
     // const broker = "ws://192.168.0.122:8083/mqtt";
-    
+
     const TOTAL_APARTAMENTOS = 22;
 
     const statusEl = document.getElementById("status");
